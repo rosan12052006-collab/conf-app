@@ -8,14 +8,14 @@ pipeline {
         }
         stage('Deploy to Kubernetes') {
             steps {
-                // This line tells Jenkins EXACTLY where your Docker Desktop K8s "key" is
-                bat 'kubectl --kubeconfig="C:/Users/Rosan/.kube/config" apply -f deployment.yaml'
+                // Using your exact folder path from the image
+                bat 'kubectl --kubeconfig="C:/Users/batch1.VITUNIVERSITY/.kube/config" apply -f deployment.yaml'
             }
         }
         stage('Verify') {
             steps {
-                bat 'kubectl --kubeconfig="C:/Users/Rosan/.kube/config" get pods'
-                bat 'kubectl --kubeconfig="C:/Users/Rosan/.kube/config" get services'
+                bat 'kubectl --kubeconfig="C:/Users/batch1.VITUNIVERSITY/.kube/config" get pods'
+                bat 'kubectl --kubeconfig="C:/Users/batch1.VITUNIVERSITY/.kube/config" get services'
             }
         }
     }
