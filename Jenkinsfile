@@ -3,19 +3,20 @@ pipeline {
     stages {
         stage('Build Image') {
             steps {
-                sh 'docker build -t conference-app:latest .'
+                // Change 'sh' to 'bat' for Windows
+                bat 'docker build -t conference-app:latest .'
             }
         }
         stage('Deploy to Kubernetes') {
             steps {
-                // This applies the deployment and service to your local K8s cluster
-                sh 'kubectl apply -f deployment.yaml'
+                // Change 'sh' to 'bat' for Windows
+                bat 'kubectl apply -f deployment.yaml'
             }
         }
         stage('Verify') {
             steps {
-                sh 'kubectl get pods'
-                sh 'kubectl get services'
+                bat 'kubectl get pods'
+                bat 'kubectl get services'
             }
         }
     }
