@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Deploy to Kubernetes') {
             steps {
-                // We point kubectl to your user config file
+                // This line tells Jenkins EXACTLY where your Docker Desktop K8s "key" is
                 bat 'kubectl --kubeconfig="C:/Users/Rosan/.kube/config" apply -f deployment.yaml'
             }
         }
