@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build Image') {
+            steps {
+                sh 'docker build -t conference-app:latest .'
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                // This applies the deployment and service to your local K8s cluster
+                sh 'kubectl apply -f deployment.yaml'
+            }
+        }
+        stage('Verify') {
+            steps {
+                sh 'kubectl get pods'
+                sh 'kubectl get services'
+            }
+        }
+    }
+}
